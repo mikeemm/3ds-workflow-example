@@ -68,13 +68,13 @@ jobs:
     - name: Upload 3DSX
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.REPO_NAME }}.3dsx
+        name: 3dsx
         path: ${{ env.REPO_NAME }}/${{ env.REPO_NAME }}.3dsx
 
     - name: Upload ELF
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.REPO_NAME }}.elf
+        name: elf
         path: ${{ env.REPO_NAME }}/${{ env.REPO_NAME }}.elf
 
   build-banner:
@@ -114,6 +114,7 @@ jobs:
       if: needs.changes.outputs.banner == 'true' || needs.changes.outputs.workflow == 'true'
       uses: actions/upload-artifact@v4
       with:
+        name: banner
         path: banner.bin
           
     - name: Create SMDH
@@ -124,6 +125,7 @@ jobs:
       if: needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true'
       uses: actions/upload-artifact@v4
       with:
+        name: icon
         path: icon.smdh
 
   build-cia:
@@ -145,7 +147,7 @@ jobs:
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.REPO_NAME }}.3dsx
+          name: 3dsx
           path: pages/${{ env.APP_NAME }}.3dsx
 
       - name: Download 3DSX From Pages
@@ -156,7 +158,7 @@ jobs:
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.REPO_NAME }}.elf
+          name: elf
           path: pages/${{ env.APP_NAME }}.elf
 
       - name: Download ELF From Pages
@@ -167,7 +169,7 @@ jobs:
         if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.workflow == 'true' }}
         uses: actions/download-artifact@v4
         with:
-          name: banner.bin
+          name: banner
           path: pages/banner.bin
 
       - name: Download Banner From Pages
@@ -178,7 +180,7 @@ jobs:
         if: ${{ needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true' }}
         uses: actions/download-artifact@v4
         with:
-          name: icon.smdh
+          name: icon
           path: pages/icon.smdh
 
       - name: Download SMDH From Pages

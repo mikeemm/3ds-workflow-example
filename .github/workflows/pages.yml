@@ -74,8 +74,8 @@ jobs:
     - name: Upload ELF
       uses: actions/upload-artifact@v7
       with:
+        name: elf
         path: ${{ env.REPO_NAME }}/${{ env.REPO_NAME }}.elf
-        archive: 'false'
 
   build-banner:
     needs: changes
@@ -158,8 +158,8 @@ jobs:
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
         uses: actions/download-artifact@v8
         with:
-          name: ${{ env.REPO_NAME }}.elf
-          path: pages/${{ env.APP_NAME }}.elf
+          name: elf
+          path: pages
 
       - name: Download ELF From Pages
         if: ${{ needs.changes.outputs.src == 'false' && needs.changes.outputs.workflow == 'false' }}

@@ -66,13 +66,13 @@ jobs:
         make
       
     - name: Upload 3DSX
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: 3dsx
         path: ${{ env.REPO_NAME }}/${{ env.REPO_NAME }}.3dsx
 
     - name: Upload ELF
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: elf
         path: ${{ env.REPO_NAME }}/${{ env.REPO_NAME }}.elf
@@ -112,7 +112,7 @@ jobs:
 
     - name: Upload Banner
       if: needs.changes.outputs.banner == 'true' || needs.changes.outputs.workflow == 'true'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: banner
         path: banner.bin
@@ -123,7 +123,7 @@ jobs:
 
     - name: Upload SMDH
       if: needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: icon
         path: icon.smdh
@@ -145,7 +145,7 @@ jobs:
 
       - name: Download 3DSX From Artifact
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: 3dsx
           path: pages/${{ env.APP_NAME }}.3dsx
@@ -156,7 +156,7 @@ jobs:
 
       - name: Download ELF From Artifact
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: elf
           path: pages/${{ env.APP_NAME }}.elf
@@ -167,7 +167,7 @@ jobs:
 
       - name: Download Banner From Artifact
         if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.workflow == 'true' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: banner
           path: pages/banner.bin
@@ -178,7 +178,7 @@ jobs:
     
       - name: Download SMDH From Artifact
         if: ${{ needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true' }}
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: icon
           path: pages/icon.smdh

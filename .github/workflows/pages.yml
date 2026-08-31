@@ -47,7 +47,7 @@ jobs:
 
   build-program:
     needs: changes
-    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs. == 'true' }}
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
     runs-on: ubuntu-latest
     container: devkitpro/devkitarm
 
@@ -79,7 +79,7 @@ jobs:
 
   build-banner:
     needs: changes
-    if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.icon == 'true' || needs.changes.outputs. == 'true' }}
+    if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true' }}
     runs-on: ubuntu-latest
 
     env:

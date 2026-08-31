@@ -148,7 +148,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: 3dsx
-          path: pages/${{ env.APP_NAME }}.3dsx
+          path: pages
 
       - name: Download 3DSX From Pages
         if: ${{ needs.changes.outputs.src == 'false' && needs.changes.outputs.workflow == 'false' }}
@@ -170,7 +170,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: banner
-          path: pages/banner.bin
+          path: pages
 
       - name: Download Banner From Pages
         if: ${{ needs.changes.outputs.banner == 'false' && needs.changes.outputs.workflow == 'false' }}
@@ -181,7 +181,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: icon
-          path: pages/icon.smdh
+          path: pages
 
       - name: Download SMDH From Pages
         if: ${{ needs.changes.outputs.icon == 'false' && needs.changes.outputs.workflow == 'false' }}

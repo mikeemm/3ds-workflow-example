@@ -135,10 +135,9 @@ jobs:
 
     steps:
       - name: Get Pages URL
-        id: url
-        uses: tuftsrt/get-pages-url@v1
         env:
-          PAGES_BASE_URL: ${{ steps.url.outputs.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "PAGES_BASE_URL=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')" >> $GITHUB_ENV
 
       - name: Create Pages Artifact Folder
         run: mkdir pages

@@ -3,7 +3,7 @@ name: Update and Publish CIA with QR Code + other assets
 on:
   push:
     paths:
-      - 'src/**'
+      - 'source/**'
       - 'banner/**'
       - 'icon.png'
       - 'config.rsf'
@@ -57,7 +57,7 @@ jobs:
       with:
         path: ${{ env.REPO_NAME }}
         sparse-checkout: |
-          src
+          source
           # ...
 
     - name: Compile 3DSX and ELF

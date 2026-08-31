@@ -8,7 +8,7 @@ on:
       - 'icon.png'
       - 'config.rsf'
       - 'Makefile'
-      - '.github/workflows/publish.yml'
+      - '.github/workflows/pages.yml'
       # Add any other folders or files used in your program such as assets/**
     branches:
       - master
@@ -43,11 +43,11 @@ jobs:
           icon:
             - 'icon.png'
           workflow:
-            - '.github/workflows/publish.yml'
+            - '.github/workflows/pages.yml'
 
   build-program:
     needs: changes
-    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
+    if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs. == 'true' }}
     runs-on: ubuntu-latest
     container: devkitpro/devkitarm
 
@@ -79,7 +79,7 @@ jobs:
 
   build-banner:
     needs: changes
-    if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true' }}
+    if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.icon == 'true' || needs.changes.outputs. == 'true' }}
     runs-on: ubuntu-latest
 
     env:

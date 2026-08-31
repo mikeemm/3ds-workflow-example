@@ -151,7 +151,7 @@ jobs:
 
       - name: Download 3DSX From Pages
         if: ${{ needs.changes.outputs.src == 'false' && needs.changes.outputs.workflow == 'false' }}
-        run: wget ${{ env.PAGES_BASE_URL }}/${{ env.REPO_NAME }}.3dsx pages/${{ env.APP_NAME }}.3dsx
+        run: wget ${{ env.PAGES_BASE_URL }}${{ env.REPO_NAME }}.3dsx pages/${{ env.APP_NAME }}.3dsx
 
       - name: Download ELF From Artifact
         if: ${{ needs.changes.outputs.src == 'true' || needs.changes.outputs.workflow == 'true' }}
@@ -162,7 +162,7 @@ jobs:
 
       - name: Download ELF From Pages
         if: ${{ needs.changes.outputs.src == 'false' && needs.changes.outputs.workflow == 'false' }}
-        run: wget ${{ env.PAGES_BASE_URL }}/${{ env.REPO_NAME }}.elf pages/${{ env.APP_NAME }}.elf
+        run: wget ${{ env.PAGES_BASE_URL }}${{ env.REPO_NAME }}.elf pages/${{ env.APP_NAME }}.elf
 
       - name: Download Banner From Artifact
         if: ${{ needs.changes.outputs.banner == 'true' || needs.changes.outputs.workflow == 'true' }}
@@ -173,7 +173,7 @@ jobs:
 
       - name: Download Banner From Pages
         if: ${{ needs.changes.outputs.banner == 'false' && needs.changes.outputs.workflow == 'false' }}
-        run: wget ${{ env.PAGES_BASE_URL }}/banner.bin pages/banner.bin
+        run: wget ${{ env.PAGES_BASE_URL }}banner.bin pages/banner.bin
     
       - name: Download SMDH From Artifact
         if: ${{ needs.changes.outputs.icon == 'true' || needs.changes.outputs.workflow == 'true' }}
@@ -184,7 +184,7 @@ jobs:
 
       - name: Download SMDH From Pages
         if: ${{ needs.changes.outputs.icon == 'false' && needs.changes.outputs.workflow == 'false' }}
-        run: wget ${{ env.PAGES_BASE_URL }}/icon.smdh pages/icon.smdh
+        run: wget ${{ env.PAGES_BASE_URL }}icon.smdh pages/icon.smdh
 
       - name: Download Makerom
         run: wget https://github.com/3DSGuy/Project_CTR/archive/refs/heads/master.zip -O makerom.zip
@@ -208,7 +208,7 @@ jobs:
       - name: Generate QR Code for CIA URL
         uses: snow-actions/qrcode@v2.0.0
         with:
-          text: ${{ env.PAGES_BASE_URL }}/${{ env.APP_NAME }}.cia
+          text: ${{ env.PAGES_BASE_URL }}${{ env.APP_NAME }}.cia
           path: pages/qrcode-cia.png
 
       - name: Upload Pages Artifact

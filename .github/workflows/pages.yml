@@ -220,6 +220,11 @@ jobs:
   deploy-pages:
     needs: build-cia
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+    
     steps:
       - name: Deploy Pages Artifact
         uses: actions/deploy-pages@v4
